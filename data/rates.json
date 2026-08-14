@@ -1,16 +1,21 @@
 {
   "as_of": "2026-08-14",
   "source": "fixed rate table (static fixture, not live market data)",
+  "note": "decimals is the number of minor units the target currency prints with, and is the source of truth for rounding. JPY prints 0, KWD prints 3, most others print 2.",
   "rates": [
-    { "pair": "USD/EUR", "from": "USD", "to": "EUR", "rate": 0.9183 },
-    { "pair": "EUR/USD", "from": "EUR", "to": "USD", "rate": 1.0890 },
-    { "pair": "USD/JPY", "from": "USD", "to": "JPY", "rate": 147.62 },
-    { "pair": "JPY/USD", "from": "JPY", "to": "USD", "rate": 0.006774 },
-    { "pair": "GBP/USD", "from": "GBP", "to": "USD", "rate": 1.2745 },
-    { "pair": "USD/GBP", "from": "USD", "to": "GBP", "rate": 0.7846 },
-    { "pair": "USD/CAD", "from": "USD", "to": "CAD", "rate": 1.3612 },
-    { "pair": "USD/INR", "from": "USD", "to": "INR", "rate": 83.94 },
-    { "pair": "EUR/GBP", "from": "EUR", "to": "GBP", "rate": 0.8541 },
-    { "pair": "AUD/USD", "from": "AUD", "to": "USD", "rate": 0.6618 }
+    { "pair": "USD/EUR", "from": "USD", "to": "EUR", "rate": 0.9183, "decimals": 2 },
+    { "pair": "EUR/USD", "from": "EUR", "to": "USD", "rate": 1.089, "decimals": 2 },
+    { "pair": "USD/JPY", "from": "USD", "to": "JPY", "rate": 147.62, "decimals": 0 },
+    { "pair": "JPY/USD", "from": "JPY", "to": "USD", "rate": 0.006774, "decimals": 2 },
+    { "pair": "EUR/JPY", "from": "EUR", "to": "JPY", "rate": 160.75, "decimals": 0 },
+    { "pair": "GBP/USD", "from": "GBP", "to": "USD", "rate": 1.2745, "decimals": 2 },
+    { "pair": "USD/GBP", "from": "USD", "to": "GBP", "rate": 0.7846, "decimals": 2 },
+    { "pair": "USD/CAD", "from": "USD", "to": "CAD", "rate": 1.3612, "decimals": 2 },
+    { "pair": "USD/INR", "from": "USD", "to": "INR", "rate": 83.94, "decimals": 2 },
+    { "pair": "EUR/GBP", "from": "EUR", "to": "GBP", "rate": 0.8541, "decimals": 2 },
+    { "pair": "AUD/USD", "from": "AUD", "to": "USD", "rate": 0.6618, "decimals": 2 },
+    { "pair": "USD/KWD", "from": "USD", "to": "KWD", "rate": 0.30665, "decimals": 3 },
+    { "pair": "KWD/USD", "from": "KWD", "to": "USD", "rate": 3.2611, "decimals": 2 },
+    { "pair": "EUR/KWD", "from": "EUR", "to": "KWD", "rate": 0.33393, "decimals": 3 }
   ]
 }

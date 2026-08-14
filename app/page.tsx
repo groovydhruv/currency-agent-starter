@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ratesTable from "../data/rates.json";
 
 type Trace = {
@@ -37,7 +37,8 @@ function lookup(query: string): Trace {
   const plan =
     `1. Read the pair as ${pair} with an amount of ${amount}.\n` +
     `2. Look ${pair} up in the fixed rate table (data/rates.json).\n` +
-    `3. Multiply ${amount} by the rate and report the result.`;
+    `3. Multiply ${amount} by the rate.\n` +
+    `4. Round to the decimals the table gives for ${to}, not to a fixed width.`;
 
   const toolCall = `lookupRate({ pair: "${pair}" })`;
 
@@ -54,15 +55,17 @@ function lookup(query: string): Trace {
     };
   }
 
-  const converted = amount * entry.rate;
+  // The table decides the precision, not this file. JPY prints 0 decimals,
+  // KWD prints 3, and most currencies print 2.
+  const converted = (amount * entry.rate).toFixed(entry.decimals);
 
   return {
     plan,
     toolCall,
     toolResult: JSON.stringify(entry, null, 2),
     answer:
-      `${amount} ${from} = ${Number(converted.toFixed(4))} ${to} ` +
-      `(rate ${entry.rate}, as of ${ratesTable.as_of}).`,
+      `${amount} ${from} = ${converted} ${to} ` +
+      `(rate ${entry.rate}, ${entry.decimals} decimals, as of ${ratesTable.as_of}).`,
   };
 }
 
@@ -76,6 +79,16 @@ const LABELS: { key: keyof Trace; label: string }[] = [
 export default function Home() {
   const [question, setQuestion] = useState("");
   const [trace, setTrace] = useState<Trace | null>(null);
+
+  // A question can also arrive in the URL as ?q=100+USD+to+EUR, which makes a
+  // lookup linkable and reproducible.
+  useEffect(() => {
+    const preset = new URLSearchParams(window.location.search).get("q");
+    if (preset) {
+      setQuestion(preset);
+      setTrace(lookup(preset));
+    }
+  }, []);
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
