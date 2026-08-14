@@ -1,0 +1,16 @@
+{
+  "as_of": "2026-08-14",
+  "source": "fixed rate table (static fixture, not live market data)",
+  "rates": [
+    { "pair": "USD/EUR", "from": "USD", "to": "EUR", "rate": 0.9183 },
+    { "pair": "EUR/USD", "from": "EUR", "to": "USD", "rate": 1.0890 },
+    { "pair": "USD/JPY", "from": "USD", "to": "JPY", "rate": 147.62 },
+    { "pair": "JPY/USD", "from": "JPY", "to": "USD", "rate": 0.006774 },
+    { "pair": "GBP/USD", "from": "GBP", "to": "USD", "rate": 1.2745 },
+    { "pair": "USD/GBP", "from": "USD", "to": "GBP", "rate": 0.7846 },
+    { "pair": "USD/CAD", "from": "USD", "to": "CAD", "rate": 1.3612 },
+    { "pair": "USD/INR", "from": "USD", "to": "INR", "rate": 83.94 },
+    { "pair": "EUR/GBP", "from": "EUR", "to": "GBP", "rate": 0.8541 },
+    { "pair": "AUD/USD", "from": "AUD", "to": "USD", "rate": 0.6618 }
+  ]
+}
